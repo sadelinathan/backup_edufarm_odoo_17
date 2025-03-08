@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- TAGS FOR CASH FLOW STATEMENT DIRECT CUSTOM -->
+        <record id="account_tag_operating_main" model="account.account.tag">
+            <field name="name">Operating Activities Main</field>
+            <field name="applicability">accounts</field>
+        </record>
+        <record id="account_tag_operating_other" model="account.account.tag">
+            <field name="name">Operating Activities Other</field>
+            <field name="applicability">accounts</field>
+        </record>
+    </data>
+</odoo>
