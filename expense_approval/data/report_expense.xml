@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- QWeb Template -->
+<!--     <template id="report_expense_payment_template">
+        <t t-call="web.external_layout_standard">
+            <t t-foreach="docs" t-as="object">
+                <t t-set="company" t-value="object.company_id"/> 
+                <main>
+                    <div class="page">
+                        <h4 class="text-right">PENGELUARAN (EXPENSE PAYMENT)</h4>
+                        <table class="table">
+                            <tr>
+                                <td><strong>JUMLAH:</strong></td>
+                                <td><t t-esc="object.total_amount" /></td>
+                                <td><strong>TANGGAL:</strong></td>
+                                <td><t t-esc="object.accounting_date" /></td>
+                            </tr>
+                            <tr>
+                                <td><strong>TERBILANG:</strong></td>
+                                <td colspan="3">
+                                    <t t-esc="object.currency_id.amount_to_text(object.total_amount)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>REFERENSI:</strong></td>
+                                <td><t t-esc="object.name" /></td>
+                                <td><strong>TANGGAL:</strong></td>
+                                <td><t t-esc="object.accounting_date" /></td>
+                            </tr>
+                        </table>
+
+                        <table class="table">
+                            <tr>
+                                <td><strong>DIBAYAR KEPADA:</strong></td>
+                                <td colspan="3"><t t-esc="object.employee_id.name" /></td>
+                            </tr>
+                            <tr>
+                                <td><strong>KEPERLUAN:</strong></td>
+                                <td colspan="3"><t t-esc="object.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>TGL JATUH TEMPO:</strong></td>
+                                <td><t t-esc="object.accounting_date" /></td>
+                                <td><strong>CARA PEMBAYARAN:</strong></td>
+                                <td>
+                                    <span>[ ] TUNAI</span>
+                                    <span>[ ] CEK</span>
+                                    <span>[ ] OTHER</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>UNTUK REKENING:</strong></td>
+                                <td colspan="3">.................</td>
+                            </tr>
+                        </table>
+
+                        <table class="table">
+                            <tr>
+                                <td><strong>PENANGGUNG JAWAB:</strong></td>
+                                <td><t t-esc="object.employee_id.name" /></td>
+                                <td><strong>PEMOHON:</strong></td>
+                                <td><t t-esc="object.employee_id.name" /></td>
+                            </tr>
+                        </table>
+
+                        <br />
+
+                        <table class="table text-center">
+                            <tr>
+                                <td><strong>SETUJU DIBAYAR</strong></td>
+                                <td><strong>KASIR</strong></td>
+                                <td><strong>PEMBUKUAN</strong></td>
+                                <td><strong>PENERIMA PEMBAYARAN</strong></td>
+                            </tr>
+                            <tr>
+                                <td>(________________)</td>
+                                <td>(________________)</td>
+                                <td>(________________)</td>
+                                <td>(________________)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template> -->
+
+    <template id="report_expense_payment_template">
+        <t t-call="web.external_layout_standard">
+            <t t-foreach="docs" t-as="object">
+                <t t-set="company" t-value="object.company_id"/> 
+                <main>
+                    <div class="page">
+
+                        <table class="table" style="width:100%; border: 1px solid black; border-collapse: collapse;">
+                            <tr>
+                                <td style="text-align:center; font-weight:bold; border: 1px solid black;">Cash / Bank *</td>
+                                <td style="text-align:center; font-weight:bold; border: 1px solid black;">PENGELUARAN<br/>EXPENSE PAYMENT</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;"><strong>TANGGAL:</strong> <t t-esc="object.accounting_date"/></td>
+                                <td style="border: 1px solid black;"><strong>NOMOR:</strong> <t t-esc="object.name"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black;"><strong>JUMLAH:</strong> <t t-esc="object.currency_id.symbol"/><t t-esc="'{:,.2f}'.format(object.total_amount)"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black;"><strong>TERBILANG:</strong><t t-esc="object.currency_id.with_context(lang='id_ID').amount_to_text(object.total_amount)"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black;"><strong>REFERENSI:</strong> DAFTAR PEMBELIAN/FORM B No. <t t-esc="object.name"/></td>
+                            </tr>
+                        </table>
+
+                        <table class="table" style="width:100%; border: 1px solid black;">
+                            <tr>
+                                <td colspan="3"><strong>DIBAYAR KEPADA:</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="height:40px; border-bottom:1px solid black;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><strong>KEPERLUAN:</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="height:40px; border-bottom:1px solid black;"></td>
+                            </tr>
+                        </table>
+
+                        <table class="table" style="width:100%; border: 1px solid black;">
+                            <tr>
+                                <td><strong>TGL JATUH TEMPO:</strong> <t t-esc="object.accounting_date" /></td>
+                                <td><strong>CARA PEMBAYARAN:</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <t t-esc="object.metode_pembayaran"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table" style="width:100%; border: 1px solid black;">
+                            <tr>
+                                <td><strong>UNTUK REKENING:</strong></td>
+                                <td><t t-esc="object.bank_account"/></td>
+                            </tr>
+                        </table>
+
+                        <table class="table" style="width:100%; border: 1px solid black;">
+                            <tr>
+                                <td><strong>PENANGGUNG JAWAB:</strong></td>
+                                <td><t t-esc="object.expense_approved_ids[0].user_id.name"/></td>
+                                <td><strong>PEMOHON:</strong></td>
+                                <td><t t-esc="object.employee_id.name"/><t t-esc="object.submited_date"/></td>
+                            </tr>
+                        </table>
+
+                        <br />
+
+                        <table class="table text-center" style="width:100%; border: 1px solid black;">
+                            <tr>
+                                <t t-foreach="object.expense_approved_ids[1:]" t-as="approval">
+                                    <td><strong><t t-esc="approval.name"/></strong></td>
+                                </t>
+                            </tr>
+                            <tr>
+                                <t t-foreach="object.expense_approved_ids[1:]" t-as="approval">
+                                    <td style="height:40px;">
+                                        (<t t-esc="approval.user_id.name or '________________'"/>)
+                                    </td>
+                                </t>
+                            </tr>
+                        </table>
+
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+    <record id="action_report_hr_expense_sheet_custom" model="ir.actions.report">
+        <field name="name">Expenses Report Custom</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">expense_approval.report_expense_payment_template</field>
+        <field name="report_file">expense_approval.report_expense_payment_template</field>
+        <field name="print_report_name">'Expenses - %s - %s' % (object.employee_id.name, (object.name).replace('/', ''))</field>
+        <field name="binding_model_id" ref="hr_expense.model_hr_expense_sheet"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

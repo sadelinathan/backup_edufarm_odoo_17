@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Odoo 16 EDUFARM Create Edit Off',
-    'version': '16.0.1.0.0',
+    'name': 'EDUFARM Create Edit Off',
+    'version': '17.0.1.0.0',
     'category': 'Odoo 16 EDUFARM Create Edit Off',
     'summary': 'Odoo 16 EDUFARM Create Edit Off',
     'description': 'Odoo 16 EDUFARM Create Edit Off',
@@ -20,6 +20,6 @@
     ],
     'license': 'OPL-1',
     'installable': True,
-    'application': False,
-    'auto_install': False,
+    'application': True,
+    'auto_install': True,
 }

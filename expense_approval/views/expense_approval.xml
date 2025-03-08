@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_expense_sheet_approval" model="ir.ui.view">
+        <field name="name">hr.expense.sheet.approval</field>
+        <field name="model">hr.expense.sheet</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_approve_expense_sheets']" position="replace">
+                <button string="Approve" name="action_approve_custom" type="object" invisible="not can_approve or state != 'submit'" class="oe_highlight o_expense_sheet_approve"/>
+            </xpath>
+
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page string="Approved Line" name="approve_line" invisible="state not in ['submit', 'approve', 'post', 'done', 'cancel']">
+                    <field name="expense_approved_ids" readonly="1">
+                        <tree>
+                            <field name="level"/>
+                            <field name="user_id"/>
+                            <field name="approval_date"/>
+                            <field name="status"/>
+                            <field name="approved_status"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Other Info" name="other_info" invisible="state not in ['submit', 'approve', 'post', 'done', 'cancel']">
+                    <group>
+                        <group>
+                            <field name="submited_date"/>
+                            <field name="dibayar_kepada"/>
+                            <field name="keperluan"/>
+                        </group>
+                        <group>
+                            <field name="tgl_jatuh_tempo"/>
+                            <field name="bank_account"/>
+                            <field name="metode_pembayaran"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

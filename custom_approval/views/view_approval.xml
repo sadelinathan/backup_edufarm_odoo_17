@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="approvals.approvals_approval_menu" model="ir.ui.menu">
+    <field name="action" eval="False"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">My Approvals</field>
+    <field name="parent_id" ref="approvals.approvals_menu_root"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="approvals.approvals_menu_manager" model="ir.ui.menu">
+    <field name="action" eval="False"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [ref('approvals.group_approval_user')])]"/>
+    <field name="name">Manager</field>
+    <field name="parent_id" ref="approvals.approvals_menu_root"/>
+    <field name="sequence">20</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <record id="approvals.approvals_category_menu_config" model="ir.ui.menu">
+    <field name="action" ref="approvals.approval_category_action"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [ref('approvals.group_approval_manager')])]"/>
+    <field name="name">Approvals Types</field>
+    <field name="parent_id" ref="approvals.approvals_menu_config"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+  <record id="approvals.approvals_menu_product" model="ir.ui.menu">
+    <field name="action" eval="False"/>
+    <field name="active" eval="False"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Products</field>
+    <field name="parent_id" ref="approvals.approvals_menu_config"/>
+    <field name="sequence">30</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+
+<!--   <record id="approvals.approvals_menu_root" model="ir.ui.menu">
+    <field name="action" ref="action_user_approval"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Approvals</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">255</field>
+    <field name="web_icon">approvals,static/description/icon.png</field>
+  </record> -->
+  
+</odoo>

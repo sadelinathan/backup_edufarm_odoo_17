@@ -1,6 +1,6 @@
 {
     "name": "Vasham Confirm/Compute Depriciation Multiple Asset",
-    "version": "14.0.1.0.4",
+    "version": "17.0.1.0.4",
     "author": "Vasham Employee",
     "website": "https://vasham.co.id/",
     "category": "Generic",
