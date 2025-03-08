@@ -19,8 +19,8 @@ class AccountAsset(models.Model):
 
             return True
 
-    total_depreciated   = fields.Float(string='Deprectiated' , compute='_amount_depreciation', store=True)
-    total_depreciation   = fields.Float(string='Total Depreciation' , compute='_amount_depreciation', store=True)
+    total_depreciated   = fields.Float(string='Deprectiated', compute='_amount_depreciation', store=True)
+    total_depreciation   = fields.Float(string='Total Depreciation', compute='_amount_depreciation', store=True)
 
     @api.depends('depreciation_move_ids.state')
     def _amount_depreciation(self):

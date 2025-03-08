@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_user_approval" model="ir.ui.view">
+        <field name="name">user.approval.form</field>
+        <field name="model">user.approval</field>
+        <field name="arch" type="xml">
+            <form string="User Approval">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="0"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="create_date" readonly='1'/>
+                            <field name="condition_type"/>
+                        </group>   
+                        <group>
+                            <field name="approve_type"/>
+                            <field name="notification_is"/>
+<!--                             <field name="is_email"/>
+                            <field name="is_activity"/> -->
+                        </group> 
+                    </group>
+                    <notebook>
+                        <page string="Approval Lines" name="approval_lines">
+                            <field name="user_approval_line" widget="section_and_note_one2many" >
+                                <tree string="Approval Lines" editable="bottom">
+                                    <!-- <field name="name"/> -->
+                                    <field name="user_ids" widget="many2many_tags" string='User'/>
+                                    <field name="level"/>
+                                    <field name="name" string='Approver Name'/>
+                                    <field name="start_total"/>
+                                    <field name="end_total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+            </form>
+         </field>
+    </record>
+
+    <record id="user_approval_tree" model="ir.ui.view">
+        <field name="name">user.approval.tree</field>
+        <field name="model">user.approval</field>
+        <field name="arch" type="xml">
+            <tree string="Approval" multi_edit="1" sample="1">
+                <field name="name" string="Name"  decoration-bf="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_user_approval" model="ir.actions.act_window">
+        <field name="name">User Approval</field>
+        <field name="res_model">user.approval</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="custom_approval.user_approval_tree"/>
+    </record>
+    
+
+
+    <!-- Menu Item  -->
+    <menuitem id="menu_sale_mppb_form" name="User Approval" parent="approvals.approvals_menu_config" action="action_user_approval"/>
+</odoo>
